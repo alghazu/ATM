@@ -2,9 +2,11 @@ require 'date'
 class Account
   STANDARD_VALITDITY_YRS = 5
 
-  attr_reader :pin_code, :exp_date, :account_status
+  attr_reader :pin_code, :exp_date, :account_status, :owner
+  attr_accessor :balance
 
   def initialize(attrs={})
+    @balance = 100
     @pin_code = rand(1000..9999)
     @exp_date = set_expire_date
     @account_status = :active
@@ -24,6 +26,6 @@ class Account
   end
   def missing_owner
     raise "An Account owner is required"
-  end 
+  end
 
 end
